@@ -1,0 +1,13 @@
+{
+  "name": "Impact Websites",
+  "short_name": "Impact",
+  "description": "Web development, SEO and lead generation for growing UK businesses.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0b0b13",
+  "theme_color": "#0b0b13",
+  "icons": [
+    { "src": "img/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "img/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
