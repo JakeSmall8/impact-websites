@@ -595,8 +595,6 @@ section { position: relative; }
   text-decoration: none;
 }
 
-.tile.tall { aspect-ratio: 3 / 4; }
-
 .tile .tile-bg {
   position: absolute;
   inset: -12%;
@@ -630,13 +628,8 @@ section { position: relative; }
 
 .tile .tile-label h3 { margin-top: 0.2rem; }
 
-/* placeholder gradients for tiles, bright */
-.g1 { background: linear-gradient(135deg, #4f46e5, #06b6d4); }
-.g2 { background: linear-gradient(135deg, #c026d3, #818cf8); }
-.g3 { background: linear-gradient(135deg, #0284c7, #67e8f9); }
-.g4 { background: linear-gradient(135deg, #7c3aed, #f0abfc); }
+/* placeholder gradient for the gallery tile */
 .g5 { background: linear-gradient(135deg, #0d9488, #a5b4fc); }
-.g6 { background: linear-gradient(135deg, #a21caf, #38bdf8); }
 
 /* ---------- packages ---------- */
 
