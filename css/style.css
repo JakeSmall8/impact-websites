@@ -1046,6 +1046,16 @@ footer nav a {
 
 footer nav a:hover { color: var(--ink); }
 
+footer .footer-contact { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+
+footer .footer-contact a {
+  color: var(--ink-dim);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+footer .footer-contact a:hover { color: var(--ink); }
+
 /* social icon links (footer + contact) */
 .socials { display: flex; gap: 0.8rem; align-items: center; }
 
