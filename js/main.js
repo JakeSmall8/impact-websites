@@ -297,10 +297,49 @@
 
   document.querySelectorAll("[data-compare]").forEach((el) => {
     const range = el.querySelector(".compare-range");
+    const frame = el.querySelector(".compare-frame");
     if (!range) return;
     const set = () => el.style.setProperty("--pos", range.value + "%");
     range.addEventListener("input", set);
     set();
+
+    // Native range inputs don't drag by touch on mobile (invisible thumb), so the
+    // frame drives the divider directly. A press on the frame starts the drag;
+    // movement and release are tracked on the WINDOW so the drag keeps working
+    // no matter where the finger goes and can be repeated any number of times.
+    // We deliberately avoid setPointerCapture, whose unreliable release on iOS
+    // left the slider draggable exactly once and then stuck.
+    if (frame) {
+      let dragging = false;
+      const track = (clientX) => {
+        const rect = frame.getBoundingClientRect();
+        const pct = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+        range.value = pct;
+        set();
+      };
+      const pointX = (e) => (e.touches && e.touches[0] ? e.touches[0].clientX : e.clientX);
+      const startDrag = (e) => {
+        dragging = true;
+        track(pointX(e));
+      };
+      const moveDrag = (e) => {
+        if (!dragging) return;
+        track(pointX(e));
+      };
+      const stopDrag = () => {
+        dragging = false;
+      };
+      // pointer events cover mouse + modern touch; touch events are a fallback
+      // for any browser where pointer events on the frame misbehave
+      frame.addEventListener("pointerdown", startDrag);
+      window.addEventListener("pointermove", moveDrag, { passive: true });
+      window.addEventListener("pointerup", stopDrag);
+      window.addEventListener("pointercancel", stopDrag);
+      frame.addEventListener("touchstart", startDrag, { passive: true });
+      window.addEventListener("touchmove", moveDrag, { passive: true });
+      window.addEventListener("touchend", stopDrag);
+      window.addEventListener("touchcancel", stopDrag);
+    }
   });
 
   /* ---------- floating WhatsApp button + footer social icons (every page) ---------- */

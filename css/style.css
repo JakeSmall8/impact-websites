@@ -901,6 +901,8 @@ section { position: relative; }
   overflow: hidden;
   border: 1px solid var(--line);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  touch-action: none;
+  cursor: ew-resize;
 }
 
 .compare-img {
@@ -991,6 +993,12 @@ section { position: relative; }
   background: transparent;
   cursor: ew-resize;
   touch-action: none;
+  /* the frame (not this native input) owns all pointer/touch dragging now;
+     leaving this interactive caused the native slider's own touch-gesture
+     handling to intercept and break dragging after the first use on real
+     devices. Keyboard focus + arrow keys still work since that's unaffected
+     by pointer-events. */
+  pointer-events: none;
 }
 
 .compare-range::-webkit-slider-runnable-track { background: transparent; -webkit-appearance: none; }
