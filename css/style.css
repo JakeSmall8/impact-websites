@@ -85,6 +85,15 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); }
 
 .lede strong { color: var(--ink); font-weight: 700; }
 
+.prose {
+  color: var(--ink-dim);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  max-width: 62ch;
+  margin-top: 1.75rem;
+}
+.prose p + p { margin-top: 1.1rem; }
+.prose strong { color: var(--ink); font-weight: 600; }
+
 /* shimmering gradient text, focal */
 .grad-text {
   background: var(--grad);
