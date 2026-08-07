@@ -53,11 +53,12 @@
   revealables.forEach((el) => io.observe(el));
 
   /* ---------- scroll-driven parallax ---------- */
-  /* On narrow viewports keep only hero-scoped parallax to avoid scroll jank. */
+  /* On touch phones/tablets keep only hero-scoped parallax to avoid scroll
+     jank. Desktop keeps everything, even when the window is resized narrow. */
 
-  const isNarrow = window.matchMedia("(max-width: 900px)").matches;
+  const isTouchNarrow = window.matchMedia("(pointer: coarse) and (max-width: 900px)").matches;
   const layers = [...document.querySelectorAll("[data-parallax]")]
-    .filter((el) => !isNarrow || el.closest(".hero"))
+    .filter((el) => !isTouchNarrow || el.closest(".hero"))
     .map((el) => ({
       el,
       speed: parseFloat(el.dataset.parallax) || 0.2,

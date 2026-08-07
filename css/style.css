@@ -1508,8 +1508,9 @@ main > .marquee {
 }
 
 /* Mobile GPU relief: drop expensive decorations that don't carry the story.
-   Hero motion (mega text opening, chips, showcase image) is preserved. */
-@media (max-width: 820px) {
+   Hero motion (mega text opening, chips, showcase image) is preserved.
+   Gated on pointer:coarse so a narrow desktop window keeps the full look. */
+@media (pointer: coarse) and (max-width: 820px) {
   .beams,
   .sparks,
   .grid-lines,
