@@ -53,11 +53,15 @@
   revealables.forEach((el) => io.observe(el));
 
   /* ---------- scroll-driven parallax ---------- */
+  /* On narrow viewports keep only hero-scoped parallax to avoid scroll jank. */
 
-  const layers = [...document.querySelectorAll("[data-parallax]")].map((el) => ({
-    el,
-    speed: parseFloat(el.dataset.parallax) || 0.2,
-  }));
+  const isNarrow = window.matchMedia("(max-width: 900px)").matches;
+  const layers = [...document.querySelectorAll("[data-parallax]")]
+    .filter((el) => !isNarrow || el.closest(".hero"))
+    .map((el) => ({
+      el,
+      speed: parseFloat(el.dataset.parallax) || 0.2,
+    }));
 
   let ticking = false;
 

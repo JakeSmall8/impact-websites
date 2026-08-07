@@ -33,6 +33,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500&family=Instrument+Serif:ital@1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 
@@ -101,7 +102,7 @@
           <div class="stage-showcase" aria-hidden="true">
             <div class="showcase">
               <div class="float-wrap">
-                <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1000&q=80" alt="" width="1000" height="667">
+                <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1000&q=80" alt="" width="1000" height="667" fetchpriority="high" decoding="async">
               </div>
               <div class="chip chip-1" style="--fx:-46px; --fy:-34px;">Website rebuilds</div>
               <div class="chip chip-2" style="--fx:26px; --fy:-24px;">Hosting &amp; maintenance</div>
@@ -178,10 +179,10 @@
         <div class="compare reveal" data-compare style="--d:.2s; --pos:50%;">
           <div class="compare-frame">
             <div class="compare-img compare-after" aria-hidden="true">
-              <img class="compare-photo" src="img/after-site.jpg" alt="" loading="lazy">
+              <img class="compare-photo" src="img/after-site.webp" srcset="img/after-site-sm.webp 800w, img/after-site.webp 1600w" sizes="(max-width: 800px) 100vw, 1200px" alt="" loading="lazy" decoding="async" width="1600" height="861">
             </div>
             <div class="compare-img compare-before" aria-hidden="true">
-              <img class="compare-photo" src="img/before-site.jpg" alt="" loading="lazy">
+              <img class="compare-photo" src="img/before-site.webp" srcset="img/before-site-sm.webp 800w, img/before-site.webp 965w" sizes="(max-width: 800px) 100vw, 1200px" alt="" loading="lazy" decoding="async" width="965" height="800">
             </div>
             <div class="compare-handle" aria-hidden="true">
               <span class="compare-grip">
@@ -198,10 +199,10 @@
         <div class="compare reveal" data-compare style="--d:.3s; --pos:50%; margin-top:2.5rem;">
           <div class="compare-frame">
             <div class="compare-img compare-after" aria-hidden="true">
-              <img class="compare-photo" src="img/bondiafter.png" alt="" loading="lazy">
+              <img class="compare-photo" src="img/bondiafter.webp" srcset="img/bondiafter-sm.webp 800w, img/bondiafter.webp 1600w" sizes="(max-width: 800px) 100vw, 1200px" alt="" loading="lazy" decoding="async" width="1600" height="864">
             </div>
             <div class="compare-img compare-before" aria-hidden="true">
-              <img class="compare-photo" src="img/bondibefore.png" alt="" loading="lazy">
+              <img class="compare-photo" src="img/bondibefore.webp" srcset="img/bondibefore-sm.webp 800w, img/bondibefore.webp 1600w" sizes="(max-width: 800px) 100vw, 1200px" alt="" loading="lazy" decoding="async" width="1600" height="864">
             </div>
             <div class="compare-handle" aria-hidden="true">
               <span class="compare-grip">
