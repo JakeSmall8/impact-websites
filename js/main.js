@@ -76,10 +76,21 @@
     ticking = false;
   }
 
+  let cachedMax = 0;
+  const recomputeMax = () => { cachedMax = docEl.scrollHeight - window.innerHeight; };
+  recomputeMax();
+  window.addEventListener("resize", recomputeMax, { passive: true });
+
+  let wasScrolled = false;
   function onScroll() {
-    if (nav) nav.classList.toggle("scrolled", window.scrollY > 10);
-    const max = docEl.scrollHeight - window.innerHeight;
-    progress.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+    const y = window.scrollY;
+    // Read first, then mutate: avoids forcing a layout mid-frame.
+    progress.style.transform = `scaleX(${cachedMax > 0 ? y / cachedMax : 0})`;
+    const scrolled = y > 10;
+    if (nav && scrolled !== wasScrolled) {
+      nav.classList.toggle("scrolled", scrolled);
+      wasScrolled = scrolled;
+    }
     if (reduceMotion || !layers.length) return;
     if (!ticking) {
       ticking = true;
