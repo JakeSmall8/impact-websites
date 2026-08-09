@@ -641,8 +641,7 @@ section { position: relative; }
   pointer-events: none;
 }
 
-.page-hero > * { position: relative; z-index: 1; }
-.page-hero .hero-inner { padding-top: calc(var(--nav-h) + 3rem); }
+.page-hero .hero-inner { position: relative; z-index: 1; padding-top: calc(var(--nav-h) + 3rem); }
 
 /* ---------- gallery ---------- */
 
