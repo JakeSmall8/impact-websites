@@ -39,17 +39,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* film grain */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 500;
-  pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+/* film grain removed — mix-blend-mode fullscreen was costing ~10ms/frame */
 
 img, svg { display: block; max-width: 100%; }
 
@@ -235,9 +225,7 @@ section { position: relative; }
 }
 
 .nav.scrolled {
-  background: rgba(247, 229, 189, 0.94);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
+  background: #f7e5bd;
   border-bottom-color: var(--line);
 }
 
@@ -414,7 +402,7 @@ section { position: relative; }
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
+  filter: blur(60px);
   opacity: 0.72;
   pointer-events: none;
   z-index: 1;
@@ -429,9 +417,9 @@ section { position: relative; }
   animation: orb-a-shift 14s ease-in-out infinite alternate;
 }
 @keyframes orb-a-shift {
-  0%   { background: #ffbf00; opacity: 0.85; }
-  50%  { background: #ff9a1e; opacity: 0.9; }
-  100% { background: #ff7a1a; opacity: 0.85; }
+  0%   { background: #ffbf00; }
+  50%  { background: #ff9a1e; }
+  100% { background: #ff7a1a; }
 }
 
 /* bottom-left: blood orange/red, stays put */
@@ -1444,7 +1432,6 @@ footer .footer-contact a:hover { color: var(--ink); }
     radial-gradient(50% 50% at 45% 45%, hsl(45 100% 62% / 0.55), transparent 70%),
     radial-gradient(40% 40% at 70% 60%, hsl(8 88% 50% / 0.45), transparent 70%),
     radial-gradient(35% 35% at 30% 65%, hsl(38 100% 62% / 0.4), transparent 70%);
-  filter: blur(30px);
   opacity: calc(0.55 + var(--p, 0) * 0.45);
   transform: scale(calc(0.9 + var(--p, 0) * 0.3));
   pointer-events: none;
@@ -1480,14 +1467,12 @@ footer .footer-contact a:hover { color: var(--ink); }
   gap: 0.5rem;
   padding: 0.55rem 1rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(38, 26, 16, 0.55);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 245, 224, 0.22);
+  background: rgba(28, 15, 4, 0.78);
   font-family: var(--font-display);
   font-size: 0.78rem;
   letter-spacing: 0.06em;
-  color: var(--ink);
+  color: var(--ink-inv);
   white-space: nowrap;
   transform: translate(calc(var(--p, 0) * var(--fx, 0px)), calc(var(--p, 0) * var(--fy, 0px)));
   will-change: transform;
