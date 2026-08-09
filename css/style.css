@@ -124,6 +124,138 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); }
 .prose p + p { margin-top: 1.1rem; }
 .prose strong { color: var(--ink); font-weight: 600; }
 
+/* Why-choose block: on desktop, shift right so the text feels lighter */
+.why-choose { max-width: 62ch; }
+@media (min-width: 900px) {
+  .why-choose { margin-left: auto; text-align: left; }
+}
+
+/* ---------- website score checker ---------- */
+
+.score-card {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 24px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+}
+
+.score-gauge {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+}
+
+.gauge-svg {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  overflow: visible;
+}
+
+.gauge-track,
+.gauge-fill {
+  fill: none;
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+
+.gauge-track { stroke: rgba(24, 11, 4, 0.14); }
+
+.gauge-fill {
+  stroke: #8a7460;
+  stroke-dasharray: 0 100;
+  transition: stroke-dasharray 0.9s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.4s;
+}
+
+/* colour bands set by JS via data-band */
+.score-gauge[data-band="red"] .gauge-fill { stroke: #c22b1a; }
+.score-gauge[data-band="amber"] .gauge-fill { stroke: #ffb232; }
+.score-gauge[data-band="green"] .gauge-fill { stroke: #1f9d55; }
+
+.score-value {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+.score-num {
+  font-size: clamp(2.6rem, 5vw, 3.4rem);
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.score-max { font-size: 0.9rem; color: var(--ink-dim); margin-left: 0.15rem; }
+
+.score-label {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--ink-dim);
+  font-size: 0.9rem;
+}
+
+.score-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.score-field {
+  display: grid;
+  gap: 0.35rem;
+}
+.score-field > span {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-dim);
+}
+.score-field input {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.65);
+  font: inherit;
+  color: var(--ink);
+  transition: border-color 0.2s, background 0.2s;
+}
+.score-field input:focus {
+  outline: none;
+  border-color: var(--accent-2);
+  background: #fff;
+}
+
+.score-submit { justify-self: start; }
+
+.score-note {
+  font-size: 0.8rem;
+  color: var(--ink-dim);
+}
+
+.score-card.is-sent .score-form { display: none; }
+.score-sent-msg {
+  display: none;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  color: var(--ink);
+}
+.score-card.is-sent .score-sent-msg { display: block; }
+
+@media (max-width: 720px) {
+  .score-card { grid-template-columns: 1fr; }
+  .score-submit { justify-self: stretch; }
+}
+
 /* shimmering gradient text, focal */
 .grad-text {
   background: var(--grad);

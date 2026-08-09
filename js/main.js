@@ -445,4 +445,49 @@
       setTimeout(() => banner.remove(), 500);
     });
   }
+
+  /* ---------- website score checker ---------- */
+
+  const scoreCard = document.querySelector(".score-card");
+  if (scoreCard) {
+    const gauge = scoreCard.querySelector(".score-gauge");
+    const fill = scoreCard.querySelector(".gauge-fill");
+    const numEl = scoreCard.querySelector(".score-num");
+    const labelEl = scoreCard.querySelector(".score-label");
+    const form = scoreCard.querySelector(".score-form");
+    const sentMsg = document.createElement("div");
+    sentMsg.className = "score-sent-msg";
+    sentMsg.innerHTML = "<strong>Report on its way.</strong><br>I'll send your full breakdown within one working day.";
+    scoreCard.appendChild(sentMsg);
+
+    const bandFor = (score) => {
+      if (score <= 0) return "";
+      if (score < 60) return "red";
+      if (score < 90) return "amber";
+      return "green";
+    };
+
+    const setScore = (score) => {
+      const clamped = Math.max(0, Math.min(100, score));
+      fill.style.strokeDasharray = `${clamped} 100`;
+      gauge.dataset.score = String(clamped);
+      const band = bandFor(clamped);
+      if (band) gauge.dataset.band = band;
+      else delete gauge.dataset.band;
+      numEl.textContent = clamped > 0 ? String(clamped) : "–";
+    };
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const site = String(data.get("website") || "").trim();
+      const email = String(data.get("email") || "").trim();
+      if (!site || !email || !form.reportValidity()) return;
+      // No backend hooked up yet — the info will be captured server-side later.
+      // For now, thank the user and preview a mid-range score to hint at the gauge.
+      labelEl.textContent = "Sample preview — your real score is on its way";
+      setScore(72);
+      scoreCard.classList.add("is-sent");
+    });
+  }
 })();
