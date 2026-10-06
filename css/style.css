@@ -3,14 +3,14 @@
    ============================================================ */
 
 :root {
-  --bg: #ecca96;              /* peachy beige body (midway) */
+  --bg: #0e0d0c;              /* peachy beige body (midway) */
   --bg-hero: #522809;         /* deep warm brown hero base */
-  --bg-raised: #f2d9a8;       /* warm off-white peach card surface */
-  --ink: #180b04;             /* very dark brown text on body */
-  --ink-dim: #5a3d28;         /* mid-brown body text */
+  --bg-raised: #1a1816;       /* warm off-white peach card surface */
+  --ink: #f6ecd9;             /* very dark brown text on body */
+  --ink-dim: #bfae94;         /* mid-brown body text */
   --ink-inv: #fff5e0;         /* cream text on dark hero */
   --ink-dim-inv: #f0d29c;     /* peach dim text on dark hero */
-  --line: rgba(24, 11, 4, 0.14);
+  --line: rgba(255, 245, 224, 0.14);
   --line-inv: rgba(255, 245, 224, 0.16);
   --accent: #ffb232;          /* shiny gold */
   --accent-2: #c22b1a;        /* blood orange/red (was teal) */
@@ -75,7 +75,7 @@ img, svg { display: block; max-width: 100%; }
 .nav-links a:hover { color: var(--accent-3); opacity: 1; }
 
 /* nav on body (peachy beige): dark brown text */
-.nav.scrolled { background: rgba(247, 229, 189, 0.94); border-bottom-color: var(--line); }
+.nav.scrolled { background: rgba(14, 13, 12, 0.94); border-bottom-color: var(--line); }
 .nav.scrolled .brand,
 .nav.scrolled .brand-sub { color: var(--ink); }
 .nav.scrolled .nav-links a { color: var(--ink); opacity: 0.9; }
@@ -288,7 +288,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); }
   padding: 0.85rem 1rem;
   border-radius: 12px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.06);
   font: inherit;
   color: var(--ink);
   transition: border-color 0.2s, background 0.2s;
@@ -296,7 +296,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); }
 .score-field input:focus {
   outline: none;
   border-color: var(--accent-2);
-  background: #fff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .score-submit { justify-self: start; }
@@ -384,7 +384,7 @@ section { position: relative; }
   line-height: 1;
   letter-spacing: -0.03em;
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(24, 11, 4, 0.15);
+  -webkit-text-stroke: 1.5px rgba(255, 245, 224, 0.12);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
@@ -423,7 +423,7 @@ section { position: relative; }
 }
 
 .nav.scrolled {
-  background: #f7e5bd;
+  background: #0e0d0c;
   border-bottom-color: var(--line);
 }
 
@@ -1057,7 +1057,23 @@ section { position: relative; }
 /* ---------- about intro ---------- */
 
 .about-intro {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(2rem, 5vw, 4rem);
+}
+
+.about-intro .lede { max-width: none; }
+
+.about-intro .about-lead {
+  grid-column: 1 / -1;
+  max-width: 62ch;
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+@media (max-width: 820px) {
+  .about-intro { grid-template-columns: 1fr; }
 }
 
 /* ---------- stats ---------- */
@@ -1429,6 +1445,8 @@ footer .footer-contact a:hover { color: var(--ink); }
   top: 0;
   height: 100dvh;
   min-height: 0;
+  padding-top: calc(var(--nav-h) + 1.5rem);
+  padding-bottom: 4.5rem;
 }
 
 /* ---------- hero stage: centered poster layout ---------- */
@@ -1446,7 +1464,7 @@ footer .footer-contact a:hover { color: var(--ink); }
 .mega-wrap {
   position: relative;
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 16.5vw, 14.5rem);
+  font-size: clamp(4.5rem, min(16.5vw, 20vh), 14.5rem);
   line-height: 0.95;
   font-weight: 700;
   letter-spacing: -0.03em;
