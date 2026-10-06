@@ -1054,34 +1054,10 @@ section { position: relative; }
 .contact-line a:hover { color: var(--accent-2); }
 
 
-/* ---------- about intro photo ---------- */
+/* ---------- about intro ---------- */
 
 .about-intro {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
-}
-
-.about-photo {
-  position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  aspect-ratio: 3 / 4;
-}
-
-.about-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.about-photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(160deg, rgba(245, 178, 107, 0.18), transparent 55%, rgba(236, 91, 91, 0.14));
+  display: block;
 }
 
 /* ---------- stats ---------- */
@@ -1737,7 +1713,6 @@ textarea:focus-visible,
 
   .stage-showcase { width: min(320px, 84vw); margin-top: -2rem; }
   .stage-foot .lede { font-size: 0.95rem; }
-  .about-intro { grid-template-columns: 1fr; }
 }
 
 /* Skip rendering below-the-fold sections until they scroll close.
